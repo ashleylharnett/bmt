@@ -1,0 +1,252 @@
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+textarea,
+input,
+button {
+  outline: none;
+}
+
+#appWindow {
+  width: 100%;
+}
+#appBanner {
+  text-align: center;
+  background: #efefef;
+  padding: 16px 25px;
+  margin: 0 0 50px 0;
+  border-bottom: #ddd 1px solid;
+}
+#appBanner h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.8em;
+  line-height: 1.8em;
+  text-align: left;
+  font-weight: lighter;
+  width: 100%;
+}
+#brandingLeft,
+#brandingRight {
+  width: 40%;
+  display: inline-block;
+}
+#brandingLeft {
+  float: left;
+  text-align: left;
+}
+#brandingRight {
+  float: right;
+  text-align: right;
+}
+#appContainer,
+#appNavigation,
+#appNavigation,
+#branding,
+#appManPage {
+  overflow: hidden;
+  max-width: 850px;
+  margin: 0 auto;
+}
+#appManPage {
+  margin-bottom: 25px;
+  border: 1px solid #ddd;
+}
+.manPageContent {
+  padding: 5px 25px 10px 25px;
+}
+.manPageContent h2 {
+  margin: 20px 0 8px 0;
+  font-size: 1.3em;
+}
+.manPageContent p {
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+#appContainer {
+  padding: 25px;
+}
+#appNavigation {
+  padding: 0 25px;
+}
+#appNavigation ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 4px;
+  border-bottom: 1px solid #ddd;
+}
+#appNavigation li {
+  display: inline;
+}
+#appNavigation li a {
+  display: inline-block;
+  padding: 7px 12px 10px 12px;
+/*  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border: 1px solid #ddd;*/
+  margin-bottom: -1px;
+  color: #343434;
+  text-decoration: none;
+}
+#appNavigation li a.selectedTab {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
+  border-top: 3px solid rgba(0,119,204,1);
+  padding: 7px 11px 10px 11px;
+}
+#appNavigation li a:hover {
+  background: #efefef;
+  border-top: 3px solid #efefef;
+}
+#appNavigation li a.selectedTab:hover {
+  background: none;
+  border-top: 3px solid rgba(0,119,204,1);
+}
+fieldset {
+  border: none;
+  padding: 0;
+}
+.appPanelPart {
+  display: block;
+  margin: 0 0 10px 0;
+}
+.screenReader {
+  display: none;
+}
+label {
+  padding: 5px 0;
+}
+input[type=text] {
+  display: inline-block;
+  margin: 5px auto;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9em;
+  box-shadow: none;
+}
+textarea {
+  width: calc(100% - 30px);
+  height: 120px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+select {
+  height: 30px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+noscript p,
+.warning p {
+  display: block;
+  padding: 10px 20px;
+  border: 1px solid rgba(204,0,0,1);
+  border-radius: 4px;
+  color: rgba(204,0,0,1);
+  background: rgba(204,0,0,0.1);
+  font-size: 0.9em;
+  font-weight: bold;
+  overflow: hidden;
+  max-width: 808px;
+  margin: 25px auto;
+}
+.buttonArray {
+  text-align: center;
+}
+button {
+  display: inline-block;
+  margin: 5px auto;
+  padding: 7px 14px;
+  border: 1px solid rgba(0,119,204,1);
+  border-radius: 4px;
+  color: #07c;
+  background: rgba(0,119,204,0.1);
+  font-size: 0.9em;
+  box-shadow: none;
+}
+button.headerButton {
+  border: 1px solid rgb(152, 152, 152);
+  color: rgb(47, 47, 47);
+  background: rgba(152, 152, 152, 0.2);
+  margin: 7px 0;
+}
+button.headerButton:hover {
+  background: rgba(152, 152, 152, 0.7);
+}
+.inputContainer {
+  display: inline-block;
+  margin: 5px auto;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9em;
+  box-shadow: none;
+}
+button:hover {
+  background: rgba(0,119,204,0.6);
+  color: #fff;
+}
+footer#colophon {
+  text-align: center;
+  padding: 20px 0;
+}
+footer#colophon p {
+  font-size: 0.9em;
+}
+.appPanel {
+  display: none;
+}
+.appPanelFocused {
+  display: block;
+}
+.help {
+  background: #efefef;
+  padding: 8px;
+  border-radius: 4px;
+}
+.appPanelPart p {
+  margin: 0;
+  padding: 0;
+}
+.unfocused {
+  display: none;
+}
+.beta {
+  font-size: 0.7em;
+  font-weight: bold;
+  font-style: italic;
+}
+@media screen and ( max-width: 750px ) {
+  #appNavigation ul {
+    border: none;
+  }
+  #appNavigation li a  {
+    border: 1px solid #ddd;
+    display: block;
+    margin-bottom: 5px;
+  }
+  #appNavigation li a:hover {
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+  }
+  #appNavigation li a.selectedTab {
+    border: 1px solid #ddd;
+    border-left: 3px solid rgba(0,119,204,1);
+  }
+  #appNavigation li a.selectedTab:hover {
+    border-top: 1px solid #ddd;
+  }
+  .inputContainer {
+    display: block;
+  }
+}

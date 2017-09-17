@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--
+Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
+-->
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <title>Build My Text</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+
+    <div id="appWindow">
+
+      <header id="appBanner">
+        <div id="branding">
+          <div id="brandingLeft">
+            <h1>Build My Text <span class="beta">beta</span></h1>
+          </div><!-- /brandingLeft -->
+          <div id="brandingRight">
+            <button id="bannerHelp" class="headerButton">What's this?</button>
+          </div><!-- /brandingRight -->
+        </div><!-- /branding -->
+      </header><!-- appBanner -->
+
+      <!--[if IE 9]>
+      <div class="warning">
+        <p>Your browser is out of date and is not supported. You might want to try using <a href="https://www.google.com/chrome/" target="_blank">Google Chrome</a> or <a href="https://www.mozilla.org/en-GB/firefox/new/" target="_blank">Firefox</a>.</p>
+      </div>
+      <![endif]-->
+
+      <noscript>
+          <p>Alas, this requires JavaScript to function and you don't seem to have it enabled in this browser.</p>
+      </noscript>
+
+      <div id="appManPage" class="unfocused">
+        <div class="manPageContent">
+          <h2>What's this?</h2>
+          <p>This is a tool to help build retrieval strings for use in the <a href="http://www.tribalgroup.com/higher-education/student-management-systems-and-software/sitsvision/">SITS</a>, it is primarily aimed at administrators but has some other features which might be useful for SITS developers.</p>
+          <p>The <strong>Retrieval Strings</strong> tab generates a retrieval string based on a list of data pasted into the first text box. The operand option lets you set what delimiters should be used in the string. You can also choose to trim the salsh numbers (so 123456/7 becomes 123456).</p>
+          <p>The <strong>Condition Builder</strong> tab generates a conditional text statement based on a comparison between a field and a list of data using the "new style" SRL sytax.</p>
+          <p>The <strong>Search &amp; Replace List</strong> tab generates &amp;S search and replace syntax from a 2-column list of values.</p>
+          <button id="closeManPage" class="headerButton">Done</button>
+        </div><!-- /manPageContent -->
+      </div><!-- /appContainer -->
+
+      <nav id="appNavigation">
+        <ul>
+          <li><a href="#" id="tabOne" class="tab selectedTab">Retrieval Strings</a></li>
+          <li><a href="#" id="tabTwo" class="tab">Condition Builder</a></li>
+          <li><a href="#" id="tabThree" class="tab">Search &amp; Replace List</a></li>
+        </ul>
+      </nav><!-- /appNavigation -->
+
+      <div id="appContainer">
+
+        <fieldset class="appPanel appPanelFocused" id="appOne">
+
+          <div class="appPanelPart help">
+            <p>Note that SITS will usually only retrieve a maximum of around 400 records at a time in this way. Select your options and paste a column of data in the field below to start.</p>
+          </div><!-- /appPanelPart /help -->
+
+          <div class="appPanelPart">
+            <label>Operand:</label>
+            <select id="selectedOperand">
+              <option value="1">Or &middot;|</option>
+              <option value="2">Wildcard or &middot;*&middot;| </option>
+              <option value="3">Exclusion list &middot;&amp;&middot;! </option>
+              <option value="4">Quoted commas </option>
+              <option value="5">Commas </option>
+              <option value="6">Semicolons </option>
+              <option value="7">Unifcae list &middot;; </option>
+            </select>
+            <div class="inputContainer" id="trimSlashLabel"><input type="checkbox" id="trimSlash" unchecked> Trim slash numbers</div>
+            <div class="inputContainer" id="addSlashStarLabel"><input type="checkbox" id="addSlashStar" unchecked> Add slash goldstar (/&middot;*)</div>
+            <div class="inputContainer" id="clearSpacesLabel"><input type="checkbox" id="clearSpaces" unchecked> Remove Spaces</div>
+          </div><!-- appPanelPart -->
+
+          <div class="appPanelPart">
+            <label class="screenReader">Input:</label>
+            <textarea id="textIn" placeholder="Paste your list here" class=""></textarea>
+          </div><!-- appPanelPart -->
+
+          <div class="appPanelPart buttonArray">
+            <button id="buildMyList">Build My Text</button>
+          </div><!-- appPanelPart -->
+
+          <div class="appPanelPart">
+            <label class="screenReader">Output:</label>
+            <textarea id="textOut" cols="50" rows="50"></textarea>
+          </div><!-- appPanelPart -->
+
+        </fieldset><!-- /appOne -->
+
+        <fieldset class="appPanel" id="appTwo">
+
+          <div class="appPanelPart help">
+            <p>This tool helps build conditional text statements using new style SRL sytax, consult the <a href="https://www.mysits.com/mysits/sits940/940manuals/index.htm?https://www.mysits.com/mysits/sits940/940manuals/mensys/02super/09srl/04syntax/02conpara.htm">SITS manual</a> for more information on wildcards and conditional text.</p>
+          </div><!-- /appPanelPart /help -->
+
+          <div class="appPanelPart">
+            <label>Field for comparison: </label>
+            <input type="text" value="" id="fieldName">
+            <label>Operand:</label>
+            <select id="fieldCompareOperand">
+              <option value="1">Equals</option>
+              <option value="2">Not equal to</option>
+            </select>
+          </div><!-- /appPanelPart -->
+
+          <div class="appPanelPart">
+            <label>Prefix:</label>
+            <select id="prefixOperand">
+              <option value="0" selected></option>
+              <option value="1">Any character (including spaces) *</option>
+              <option value="2">A single character ?</option>
+              <option value="3">Any number of characters ?*</option>
+              <option value="4">A digit (0-9) #</option>
+              <option value="5">Any number of digits (0-9) #*</option>
+              <option value="6">Any letter (A-Z,a-z) &amp;</option>
+              <option value="7">Any number of letters (A-Z,a-z) &amp;*</option>
+              <option value="8">One letter, digit, or underscore @</option>
+              <option value="9">Any number of letter, digits, or underscores @*</option>
+            </select>
+            <label>Suffix:</label>
+            <select id="suffixOperand">
+              <option value="0" selected></option>
+              <option value="1">Any character *</option>
+              <option value="2">Single character ?</option>
+              <option value="3">Any number of characters ?*</option>
+              <option value="4">A digit (0-9) #</option>
+              <option value="5">Any number of digits (0-9) #*</option>
+              <option value="6">Any letter (A-Z,a-z) &amp;</option>
+              <option value="7">Any number of letters (A-Z,a-z) &amp;*</option>
+              <option value="8">One letter, digit, or underscore @</option>
+              <option value="9">Any number of letter, digits, or underscores @*</option>
+            </select>
+          </div><!-- appPanelPart -->
+
+          <div class="appPanelPart">
+            <div class="inputContainer" id="escapeWildcardsLabel"><input type="checkbox" id="escapeWildcards" unchecked> Escape wildcards in list (treat *?#&amp; as literal characters)</div>
+          </div><!-- /appPanelPart -->
+
+          <div class="appPanelPart">
+            <label class="screenReader">Input:</label>
+            <textarea id="selectTextIn" placeholder="Paste your list here" class=""></textarea>
+          </div><!-- appPanelPart -->
+
+          <div class="appPanelPart buttonArray">
+            <button id="buildMySelect">Build My Select</button>
+          </div><!-- appPanelPart -->
+
+          <div class="appPanelPart">
+            <label class="screenReader">Output:</label>
+            <textarea id="selectTextOut" cols="50" rows="50"></textarea>
+          </div><!-- appPanelPart -->
+
+        </fieldset> <!-- /appTwo -->
+
+        <fieldset class="appPanel" id="appThree">
+
+          <div class="appPanelPart help">
+            <p>This tool helps build the list parts for &amp;S search and replace lists. Enter a field code and paste two columns of text (old value in column 1 and new value in column 2) and select the appropriate delimter from the drop-down.</p>
+          </div><!-- /appPanelPart /help -->
+
+          <div class="appPanelPart">
+            <label>Field: </label>
+            <input type="text" value="" id="searchField" size="40">
+          </div><!-- /appPanelPart -->
+
+          <div class="appPanelPart">
+            <label>Input delimeter: </label>
+            <select id="selectedDelimeter">
+              <option value="1" selected>Tab</option>
+              <option value="2">Comma</option>
+              <option value="3">Semicolon</option>
+              <option value="4">Pipe/Bar</option>
+            </select>
+            <div class="inputContainer" id="searchTypeLabel"><input type="checkbox" id="searchType" unchecked> Search within string</div>
+          </div><!-- appPanelPart -->
+
+          <div class="appPanelPart">
+            <label class="screenReader">Input:</label>
+            <textarea id="searchTextIn" placeholder="Paste your data here" class=""></textarea>
+          </div><!-- appPanelPart -->
+
+          <div class="appPanelPart buttonArray">
+            <button id="buildMySearch">Build My Select</button>
+          </div><!-- appPanelPart -->
+
+          <div class="appPanelPart">
+            <label class="screenReader">Output:</label>
+            <textarea id="searchTextOut" cols="50" rows="50"></textarea>
+          </div><!-- appPanelPart -->
+
+        </fieldset><!-- /appThree -->
+
+      </div><!-- /appContainer -->
+
+      <footer id="colophon">
+        <p>&copy; 2017 Ashley Harnett | <a href="mailto:contact@buildmytext.com">Email Me</a> <span id="version"></span></p>
+      </footer><!-- /colophon -->
+
+  </body>
+</html>
