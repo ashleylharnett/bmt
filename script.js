@@ -2,7 +2,7 @@
 
 //Version
 
-var appVersion = '0.3';
+var appVersion = '0.3.1';
 
 //Event Listener
 
@@ -122,7 +122,7 @@ function buildMyList() {
     var inputText = inputText.replace(/^\s+|\s+$/g, '');
     var inputText = inputText + '/' + goldStar ;
     var inputText = inputText.replace(/(\r\n|\n|\r)/gm, '/' + goldStar + '\r');
-  } 
+  }
 
   var cleanedText = inputText.replace(/^\s+|\s+$/g, '');
   var cleanedText = precedingCharacter + cleanedText.replace(/[\n\r]/g, selectedOperand) + trailingCharacter ;
