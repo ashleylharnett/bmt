@@ -27,12 +27,7 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 
       <header id="appBanner">
         <div id="branding">
-          <div id="brandingLeft">
-            <h1>Build My Text <span class="beta">beta</span></h1>
-          </div><!-- /brandingLeft -->
-          <div id="brandingRight">
-            <button id="bannerHelp" class="headerButton">What's this?</button>
-          </div><!-- /brandingRight -->
+            <h1>Build My Text</h1>
         </div><!-- /branding -->
       </header><!-- appBanner -->
 
@@ -73,35 +68,78 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
             <p>Note that SITS will usually only retrieve a maximum of around 400 records at a time in this way. Select your options and paste a column of data in the field below to start.</p>
           </div><!-- /appPanelPart /help -->
 
-          <div class="appPanelPart">
-            <label>Operand:</label>
-            <select id="selectedOperand">
-              <option value="1">Or &middot;|</option>
-              <option value="2">Wildcard or &middot;*&middot;| </option>
-              <option value="3">Exclusion list &middot;&amp;&middot;! </option>
-              <option value="4">Quoted commas </option>
-              <option value="5">Commas </option>
-              <option value="6">Semicolons </option>
-              <option value="7">Unifcae list &middot;; </option>
-            </select>
-            <div class="inputContainer" id="trimSlashLabel"><input type="checkbox" id="trimSlash" unchecked> Trim slash numbers</div>
-            <div class="inputContainer" id="addSlashStarLabel"><input type="checkbox" id="addSlashStar" unchecked> Add slash goldstar (/&middot;*)</div>
-            <div class="inputContainer" id="clearSpacesLabel"><input type="checkbox" id="clearSpaces" unchecked> Remove Spaces</div>
-          </div><!-- appPanelPart -->
+          <div class="leftPanel">
 
-          <div class="appPanelPart">
-            <label class="screenReader">Input:</label>
-            <textarea id="textIn" placeholder="Paste your list here" class=""></textarea>
-          </div><!-- appPanelPart -->
+            <div class="appPanelPart">
+              <label class="screenReader">Input:</label>
+              <textarea id="textIn" placeholder="Paste your list here" class=""></textarea>
+            </div><!-- appPanelPart -->
 
-          <div class="appPanelPart buttonArray">
-            <button id="buildMyList">Build My Text</button>
-          </div><!-- appPanelPart -->
+            <div class="appPanelPart buttonArray">
+              <button id="buildMyList">Build My Text</button>
+            </div><!-- appPanelPart -->
 
-          <div class="appPanelPart">
-            <label class="screenReader">Output:</label>
-            <textarea id="textOut" cols="50" rows="50"></textarea>
-          </div><!-- appPanelPart -->
+            <div class="appPanelPart">
+              <label class="screenReader">Output:</label>
+              <textarea id="textOut" cols="50" rows="50"></textarea>
+            </div><!-- appPanelPart -->
+
+          </div><!-- /leftPanel -->
+
+          <div class="rightPanel">
+
+            <div class="appPanelPart optionsArray">
+
+              <div class="appOption">
+
+                <select id="selectedOperand" class="optionSelectList">
+                  <option value="1">Or &middot;|</option>
+                  <option value="2">Wildcard or &middot;*&middot;| </option>
+                  <option value="3">Exclusion list &middot;&amp;&middot;! </option>
+                  <option value="4">Quoted commas </option>
+                  <option value="5">Commas </option>
+                  <option value="6">Semicolons </option>
+                  <option value="7">Unifcae list &middot;; </option>
+                </select>
+
+              </div><!-- /appOption -->
+
+              <div class="appOption">
+
+                <span class="inputContainer" id="trimSlashLabel">Trim slash numbers</span>
+
+                <label class="switch">
+                  <input type="checkbox" id="trimSlash" unchecked>
+                  <span class="slider round"></span>
+                </label>
+
+              </div><!-- /appOption -->
+
+              <div class="appOption">
+
+                <span class="inputContainer" id="addSlashStarLabel">Add slash goldstar (/&middot;*)</span>
+
+                <label class="switch">
+                  <input type="checkbox" id="addSlashStar" unchecked>
+                  <span class="slider round"></span>
+                </label>
+
+              </div><!-- /appOption -->
+
+              <div class="appOption">
+
+                <span class="inputContainer" id="clearSpacesLabel">Remove Spaces</span>
+
+                <label class="switch">
+                  <input type="checkbox" id="clearSpaces" unchecked>
+                  <span class="slider round"></span>
+                </label>
+
+              </div><!-- /appOption -->
+
+            </div><!-- appPanelPart -->
+
+          </div><!-- /rightPanel -->
 
         </fieldset><!-- /appOne -->
 
@@ -111,62 +149,84 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
             <p>This tool helps build conditional text statements using new style SRL sytax, consult the <a href="https://www.mysits.com/mysits/sits940/940manuals/index.htm?https://www.mysits.com/mysits/sits940/940manuals/mensys/02super/09srl/04syntax/02conpara.htm">SITS manual</a> for more information on wildcards and conditional text.</p>
           </div><!-- /appPanelPart /help -->
 
-          <div class="appPanelPart">
-            <label>Field for comparison: </label>
-            <input type="text" value="" id="fieldName">
-            <label>Operand:</label>
-            <select id="fieldCompareOperand">
-              <option value="1">Equals</option>
-              <option value="2">Not equal to</option>
-            </select>
-          </div><!-- /appPanelPart -->
+          <div class="leftPanel">
 
-          <div class="appPanelPart">
-            <label>Prefix:</label>
-            <select id="prefixOperand">
-              <option value="0" selected></option>
-              <option value="1">Any character (including spaces) *</option>
-              <option value="2">A single character ?</option>
-              <option value="3">Any number of characters ?*</option>
-              <option value="4">A digit (0-9) #</option>
-              <option value="5">Any number of digits (0-9) #*</option>
-              <option value="6">Any letter (A-Z,a-z) &amp;</option>
-              <option value="7">Any number of letters (A-Z,a-z) &amp;*</option>
-              <option value="8">One letter, digit, or underscore @</option>
-              <option value="9">Any number of letter, digits, or underscores @*</option>
-            </select>
-            <label>Suffix:</label>
-            <select id="suffixOperand">
-              <option value="0" selected></option>
-              <option value="1">Any character *</option>
-              <option value="2">Single character ?</option>
-              <option value="3">Any number of characters ?*</option>
-              <option value="4">A digit (0-9) #</option>
-              <option value="5">Any number of digits (0-9) #*</option>
-              <option value="6">Any letter (A-Z,a-z) &amp;</option>
-              <option value="7">Any number of letters (A-Z,a-z) &amp;*</option>
-              <option value="8">One letter, digit, or underscore @</option>
-              <option value="9">Any number of letter, digits, or underscores @*</option>
-            </select>
-          </div><!-- appPanelPart -->
+            <div class="appPanelPart">
+                <input type="text" value="" id="fieldName" placeholder="Enter field code (e.g. FLD_CODE.FLD)">
+            </div><!-- /appPanelPart -->
 
-          <div class="appPanelPart">
-            <div class="inputContainer" id="escapeWildcardsLabel"><input type="checkbox" id="escapeWildcards" unchecked> Escape wildcards in list (treat *?#&amp; as literal characters)</div>
-          </div><!-- /appPanelPart -->
+            <div class="appPanelPart">
+              <label class="screenReader">Input:</label>
+              <textarea id="selectTextIn" placeholder="Paste your list here" class=""></textarea>
+            </div><!-- appPanelPart -->
 
-          <div class="appPanelPart">
-            <label class="screenReader">Input:</label>
-            <textarea id="selectTextIn" placeholder="Paste your list here" class=""></textarea>
-          </div><!-- appPanelPart -->
+            <div class="appPanelPart buttonArray">
+              <button id="buildMySelect">Build My Text</button>
+            </div><!-- appPanelPart -->
 
-          <div class="appPanelPart buttonArray">
-            <button id="buildMySelect">Build My Select</button>
-          </div><!-- appPanelPart -->
+            <div class="appPanelPart">
+              <label class="screenReader">Output:</label>
+              <textarea id="selectTextOut" cols="50" rows="50"></textarea>
+            </div><!-- appPanelPart -->
 
-          <div class="appPanelPart">
-            <label class="screenReader">Output:</label>
-            <textarea id="selectTextOut" cols="50" rows="50"></textarea>
-          </div><!-- appPanelPart -->
+          </div><!-- /leftPanel -->
+
+          <div class="rightPanel">
+
+            <div class="appPanelPart optionsArray">
+
+              <div class="appOption">
+                <select id="fieldCompareOperand" class="optionSelectList">
+                  <option value="1" selected>Equals</option>
+                  <option value="2">Not equal to</option>
+                </select>
+              </div><!-- /appOption -->
+
+              <div class="appOption">
+
+                <select id="prefixOperand" class="optionSelectList">
+                  <option value="0" selected>No prefix</option>
+                  <option value="1">Any character (including spaces) *</option>
+                  <option value="2">A single character ?</option>
+                  <option value="3">Any number of characters ?*</option>
+                  <option value="4">A digit (0-9) #</option>
+                  <option value="5">Any number of digits (0-9) #*</option>
+                  <option value="6">Any letter (A-Z,a-z) &amp;</option>
+                  <option value="7">Any number of letters (A-Z,a-z) &amp;*</option>
+                  <option value="8">One letter, digit, or underscore @</option>
+                  <option value="9">Any number of letter, digits, or underscores @*</option>
+                </select>
+
+              </div><!-- appOption -->
+
+              <div class="appOption">
+
+                <select id="suffixOperand" class="optionSelectList">
+                  <option value="0" selected>No suffix</option>
+                  <option value="1">Any character *</option>
+                  <option value="2">Single character ?</option>
+                  <option value="3">Any number of characters ?*</option>
+                  <option value="4">A digit (0-9) #</option>
+                  <option value="5">Any number of digits (0-9) #*</option>
+                  <option value="6">Any letter (A-Z,a-z) &amp;</option>
+                  <option value="7">Any number of letters (A-Z,a-z) &amp;*</option>
+                  <option value="8">One letter, digit, or underscore @</option>
+                  <option value="9">Any number of letter, digits, or underscores @*</option>
+                </select>
+              </div><!-- /appOption -->
+            </div><!-- appPanelPart -->
+
+            <div class="appPanelPart">
+
+              <label class="switch">
+                <input type="checkbox" id="escapeWildcards" unchecked>
+                <span class="slider round"></span>
+              </label>
+              <span class="inputContainer" id="escapeWildcardsLabel">Escape wildcards in list</span>
+
+            </div><!-- /appPanelPart -->
+
+          </div><!-- /rightPanel -->
 
         </fieldset> <!-- /appTwo -->
 
@@ -176,42 +236,66 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
             <p>This tool helps build the list parts for &amp;S search and replace lists. Enter a field code and paste two columns of text (old value in column 1 and new value in column 2) and select the appropriate delimter from the drop-down.</p>
           </div><!-- /appPanelPart /help -->
 
-          <div class="appPanelPart">
-            <label>Field: </label>
-            <input type="text" value="" id="searchField" size="40">
-          </div><!-- /appPanelPart -->
 
-          <div class="appPanelPart">
-            <label>Input delimeter: </label>
-            <select id="selectedDelimeter">
-              <option value="1" selected>Tab</option>
-              <option value="2">Comma</option>
-              <option value="3">Semicolon</option>
-              <option value="4">Pipe/Bar</option>
-            </select>
-            <div class="inputContainer" id="searchTypeLabel"><input type="checkbox" id="searchType" unchecked> Search within string</div>
+          <div class="leftPanel">
+
+            <div class="appPanelPart">
+              <input type="text" value="" id="searchField" size="40" placeholder="Enter field code (e.g. FLD_CODE.FLD)">
+            </div><!-- /appPanelPart -->
+
+            <div class="appPanelPart">
+              <label class="screenReader">Input:</label>
+              <textarea id="searchTextIn" placeholder="Paste your data here" class=""></textarea>
+            </div><!-- appPanelPart -->
+
+            <div class="appPanelPart buttonArray">
+              <button id="buildMySearch">Build My Text</button>
+            </div><!-- appPanelPart -->
+
+            <div class="appPanelPart">
+              <label class="screenReader">Output:</label>
+              <textarea id="searchTextOut" cols="50" rows="50"></textarea>
+            </div><!-- appPanelPart -->
+
+          </div><!-- /leftPanel -->
+
+          <div class="rightPanel">
+
+          <div class="appPanelPart optionsArray">
+
+            <div class="appOption">
+
+              <select id="selectedDelimeter" class="optionSelectList">
+                <option value="1" selected>Tab delimited input</option>
+                <option value="2">Comma delimited input</option>
+                <option value="3">Semicolon delimited input</option>
+                <option value="4">Pipe/Bar delimited input</option>
+              </select>
+
+            </div><!-- /appOption -->
+
+              <div class="appOption">
+
+              <label class="switch">
+                <input type="checkbox" id="searchType" unchecked>
+                <span class="slider round"></span>
+              </label>
+              <span class="inputContainer" id="searchTypeLabel">Search within string</span>
+
+            </div><!-- /appOption -->
+
           </div><!-- appPanelPart -->
 
-          <div class="appPanelPart">
-            <label class="screenReader">Input:</label>
-            <textarea id="searchTextIn" placeholder="Paste your data here" class=""></textarea>
-          </div><!-- appPanelPart -->
-
-          <div class="appPanelPart buttonArray">
-            <button id="buildMySearch">Build My Select</button>
-          </div><!-- appPanelPart -->
-
-          <div class="appPanelPart">
-            <label class="screenReader">Output:</label>
-            <textarea id="searchTextOut" cols="50" rows="50"></textarea>
-          </div><!-- appPanelPart -->
+          </div><!-- /rightPanel -->
 
         </fieldset><!-- /appThree -->
 
       </div><!-- /appContainer -->
 
       <footer id="colophon">
-        <p>&copy; 2017 <a href="http://ashleyharnett.uk" target="_blank">Ashley Harnett</a> <span id="version"></span></p>
+        <div id="footerContainer">
+          <p>&copy; 2017 <a href="https://www.linkedin.com/in/ashleylharnett/" target="_blank">Ashley Harnett</a> <br>Build My Text v<span id="version"></span></p>
+        </div><!-- /appContainer -->
       </footer><!-- /colophon -->
 
   </body>

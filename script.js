@@ -2,7 +2,7 @@
 
 //Version
 
-var appVersion = '0.3.1';
+var appVersion = '1.0';
 
 //Event Listener
 
@@ -137,7 +137,11 @@ function buildMyList() {
 
 function buildMySelect() {
 
-  var fieldName = document.getElementById('fieldName').value;
+  if ( document.getElementById('fieldName').value == '' ) {
+    var fieldName = 'FLD_CODE'
+  } else {
+    var fieldName = document.getElementById('fieldName').value;
+  }
   var inputText = document.getElementById('selectTextIn').value;
 
   if ( document.getElementById('escapeWildcards').checked == true ) {
@@ -214,7 +218,12 @@ function buildMySelect() {
 
 function buildMySearch() {
 
-  var searchField = document.getElementById('searchField').value;
+  if ( document.getElementById('searchField').value == '' ) {
+    var searchField = 'FLD_CODE';
+  } else {
+    var searchField = document.getElementById('searchField').value;
+  }
+//  var searchField = document.getElementById('searchField').value;
   var searchInput = document.getElementById('searchTextIn').value;
 
   if ( document.getElementById('searchType').checked == true ) {
@@ -223,7 +232,7 @@ function buildMySearch() {
     var quoteType ='\"';
   }
 
-  var delimString = quoteType + '=\'';
+  var delimString = quoteType + '=';
 
   if ( document.getElementById('selectedDelimeter').value  == 1 ) {
     var outputString = searchInput.replace( /\t/g , delimString );
@@ -238,9 +247,9 @@ function buildMySearch() {
   }
 
   var outputString = quoteType + outputString;
-  var outputString = outputString.replace(/(\r\n|\n|\r)/gm, '\'' + goldSemicolon + quoteType );
+  var outputString = outputString.replace(/(\r\n|\n|\r)/gm, goldSemicolon + quoteType );
 
-  document.getElementById('searchTextOut').value = '<<' + searchField + '&S' + outputString + '\'>>' ;
+  document.getElementById('searchTextOut').value = '<<' + searchField + '&S' + outputString + '>>' ;
 
 }
 
@@ -339,6 +348,6 @@ function toggleManPage() {
 
 function checkVersion() {
 
-  document.getElementById('version').innerHTML = '| Version ' + appVersion;
+  document.getElementById('version').innerHTML = appVersion;
 
 }
