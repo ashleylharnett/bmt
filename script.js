@@ -249,7 +249,7 @@ function buildMySearch() {
   var outputString = quoteType + outputString;
   var outputString = outputString.replace(/(\r\n|\n|\r)/gm,  goldSemicolon + quoteType );
 
-  document.getElementById('searchTextOut').value = '<<' + searchField + '&S' + outputString.substr(0, outputString.length -3) + '>>';
+  document.getElementById('searchTextOut').value = '<<' + searchField + '&S' + outputString + '>>';
 
 }
 
