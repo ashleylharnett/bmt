@@ -79,7 +79,7 @@ function buildMyList() {
   }
 
   var inputText = document.getElementById('textIn').value;
-  var inputText = inputText.replace(/.+/g, userDefinedPrefix + "$&" + userDefinedSuffix );
+  var inputText = userDefinedPrefix + inputText.split('\n').join(userDefinedSuffix + '\n' + userDefinedPrefix);
 
   if ( document.getElementById('selectedOperand').value == 1 ) {
     var selectedOperand = goldOr;
