@@ -5,20 +5,18 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 <html>
 
   <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-16069140-8"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-16069140-8');
-    </script>
     <meta name="viewport" content="width=device-width">
     <title>Build My Text</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.png" type="image/png">
-    <script src="script.js"></script>
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <script src="scripts/bmt.js"></script>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/jquery-ui.js"></script>
+    <script>
+      $( function() {
+        $( "#tabs" ).tabs();
+      } );
+    </script>
   </head>
 
   <body>
@@ -41,28 +39,17 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
           <p>Alas, this requires JavaScript to function and you don't seem to have it enabled in this browser.</p>
       </noscript>
 
-      <div id="appManPage" class="unfocused">
-        <div class="manPageContent">
-          <h2>What's this?</h2>
-          <p>This is a tool to help build retrieval strings for use in the <a href="http://www.tribalgroup.com/higher-education/student-management-systems-and-software/sitsvision/">SITS</a>, it is primarily aimed at administrators but has some other features which might be useful for SITS developers.</p>
-          <p>The <strong>Retrieval Strings</strong> tab generates a retrieval string based on a list of data pasted into the first text box. The operand option lets you set what delimiters should be used in the string. You can also choose to trim the salsh numbers (so 123456/7 becomes 123456).</p>
-          <p>The <strong>Condition Builder</strong> tab generates a conditional text statement based on a comparison between a field and a list of data using the "new style" SRL sytax.</p>
-          <p>The <strong>Search &amp; Replace List</strong> tab generates &amp;S search and replace syntax from a 2-column list of values.</p>
-          <button id="closeManPage" class="headerButton">Done</button>
-        </div><!-- /manPageContent -->
-      </div><!-- /appContainer -->
+      <div id="tabs" class="ui-tabs ui-corner-all ui-widget ui-widget-content">
 
-      <nav id="appNavigation">
         <ul>
-          <li><a href="#" id="tabOne" class="tab selectedTab">Retrieval Strings</a></li>
-          <li><a href="#" id="tabTwo" class="tab">Condition Builder</a></li>
-          <li><a href="#" id="tabThree" class="tab">Search &amp; Replace List</a></li>
+          <li><a href="#tabs-1">Retrieval Strings</a></li>
+          <li><a href="#tabs-2">Condition Builder</a></li>
+          <li><a href="#tabs-3">Search &amp; Replace List</a></li>
         </ul>
-      </nav><!-- /appNavigation -->
 
-      <div id="appContainer">
+      <div id="">
 
-        <fieldset class="appPanel appPanelFocused" id="appOne">
+        <fieldset id="tabs-1">
 
           <div class="appPanelPart help">
             <p>Note that SITS will usually only retrieve a maximum of around 400 records at a time in this way. Select your options and paste a column of data in the field below to start.</p>
@@ -100,6 +87,7 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
                   <option value="5">Commas </option>
                   <option value="6">Semicolons </option>
                   <option value="7">Unifcae list &middot;; </option>
+                  <option value="0">No value (concatenate)</option>
                 </select>
 
               </div><!-- /appOption -->
@@ -137,13 +125,25 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 
               </div><!-- /appOption -->
 
+              <div class="appOption">
+
+                <input type="text" value="" id="userDefinedPrefix" placeholder="User-defined prefix">
+
+              </div><!-- /appOption -->
+
+              <div class="appOption">
+
+                <input type="text" value="" id="userDefinedSuffix" placeholder="User-defined suffix">
+
+              </div><!-- /appOption -->
+
             </div><!-- appPanelPart -->
 
           </div><!-- /rightPanel -->
 
         </fieldset><!-- /appOne -->
 
-        <fieldset class="appPanel" id="appTwo">
+        <fieldset id="tabs-2">
 
           <div class="appPanelPart help">
             <p>This tool helps build conditional text statements using new style SRL sytax, consult the <a href="https://www.mysits.com/mysits/sits940/940manuals/index.htm?https://www.mysits.com/mysits/sits940/940manuals/mensys/02super/09srl/04syntax/02conpara.htm">SITS manual</a> for more information on wildcards and conditional text.</p>
@@ -214,6 +214,7 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
                   <option value="9">Any number of letter, digits, or underscores @*</option>
                 </select>
               </div><!-- /appOption -->
+
             </div><!-- appPanelPart -->
 
             <div class="appPanelPart">
@@ -230,7 +231,7 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 
         </fieldset> <!-- /appTwo -->
 
-        <fieldset class="appPanel" id="appThree">
+        <fieldset id="tabs-3">
 
           <div class="appPanelPart help">
             <p>This tool helps build the list parts for &amp;S search and replace lists. Enter a field code and paste two columns of text (old value in column 1 and new value in column 2) and select the appropriate delimter from the drop-down.</p>
@@ -290,13 +291,15 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 
         </fieldset><!-- /appThree -->
 
-      </div><!-- /appContainer -->
+      </div><!-- /tabs -->
 
-      <footer id="colophon">
-        <div id="footerContainer">
-          <p>&copy; 2017 <a href="https://www.linkedin.com/in/ashleylharnett/" target="_blank">Ashley Harnett</a> <br>Build My Text v<span id="version"></span></p>
-        </div><!-- /appContainer -->
-      </footer><!-- /colophon -->
+    </div><!-- /appWindow -->
+
+    <footer id="colophon">
+      <div id="footerContainer">
+        <p><span class="footerItem">&copy; 2018 <a href="https://www.linkedin.com/in/ashleylharnett/" target="_blank">Ashley Harnett</a></span> <span class="footerItem">Build My Text v<span id="version"></span></span></p>
+      </div><!-- /appContainer -->
+    </footer><!-- /colophon -->
 
   </body>
 </html>

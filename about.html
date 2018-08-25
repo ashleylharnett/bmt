@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
+-->
+<html>
+
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  	<link href="--jquery-ui/jquery-ui.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width">
+    <title>Build My Text</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <script src="scripts/bmt.js"></script>
+    <script src="scripts/jquery/jquery.js"></script>
+    <script src="scripts/jquery-ui.js"></script>
+    <script>
+      $( function() {
+        $( "#tabs" ).tabs();
+      } );
+    </script>
+  </head>
+
+  <body>
+
+    <div id="appWindow">
+
+      <header id="appBanner">
+        <div id="branding">
+            <h1>Build My Text</h1>
+        </div><!-- /branding -->
+      </header><!-- appBanner -->
+
+      <div class="page">
+
+        <a class="link-button" href="index.html">Go home</a>
+
+        <h2>What is this?</h2>
+        <p>This is a tool to help build retrieval strings for use in the <a href="http://www.tribalgroup.com/higher-education/student-management-systems-and-software/sitsvision/">SITS</a>, it is primarily aimed at administrators but has some other features which might be useful for SITS developers.</p>
+        <p>The <strong>Retrieval Strings</strong> tab generates a retrieval string based on a list of data pasted into the first text box. The operand option lets you set what delimiters should be used in the string. You can also choose to trim the salsh numbers (so 123456/7 becomes 123456).</p>
+        <p>The <strong>Condition Builder</strong> tab generates a conditional text statement based on a comparison between a field and a list of data using the "new style" SRL sytax.</p>
+        <p>The <strong>Search &amp; Replace List</strong> tab generates &amp;S search and replace syntax from a 2-column list of values.</p>
+        <hr>
+        <h2>Privacy</h2>
+        <p>This tool is completely private and secure, no data is transmitted to the server and all processing happens in the web browser on your computer.</p>
+
+      </div><!-- /page -->
+
+    </div><!-- /appWindow -->
+
+    <footer id="colophon">
+      <div id="footerContainer">
+        <p><span class="footerItem">&copy; 2017 <a href="https://www.linkedin.com/in/ashleylharnett/" target="_blank">Ashley Harnett</a></span> <span class="footerItem">Build My Text v<span id="version"></span></span></p>
+      </div><!-- /appContainer -->
+    </footer><!-- /colophon -->
+
+  </body>
+</html>

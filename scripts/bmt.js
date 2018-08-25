@@ -2,7 +2,7 @@
 
 //Version
 
-var appVersion = '1.0';
+var appVersion = '1.1';
 
 //Event Listener
 
@@ -40,18 +40,6 @@ window.addEventListener("DOMContentLoaded", function(event) {
     selectSearchTypeLabel();
   };
 
-  document.getElementById('tabOne').onclick = function(event) {
-    showAppOne();
-  };
-
-  document.getElementById('tabTwo').onclick = function(event) {
-    showAppTwo();
-  };
-
-  document.getElementById('tabThree').onclick = function(event) {
-    showAppThree();
-  };
-
   document.getElementById('escapeWildcardsLabel').onclick = function(event) {
     selectEscapeWildcards();
   };
@@ -78,7 +66,20 @@ var goldSemicolon =  '\u00B7;';
 
 function buildMyList() {
 
+  if ( document.getElementById('userDefinedPrefix') !== '' ) {
+    var userDefinedPrefix = document.getElementById('userDefinedPrefix').value;
+  } else {
+    var userDefinedPrefix = '';
+  }
+
+  if ( document.getElementById('userDefinedSuffix') !== '' ) {
+    var userDefinedSuffix = document.getElementById('userDefinedSuffix').value;
+  } else {
+    userDefinedSuffix = '';
+  }
+
   var inputText = document.getElementById('textIn').value;
+  var inputText = inputText.replace(/.+/g, userDefinedPrefix + "$&" + userDefinedSuffix );
 
   if ( document.getElementById('selectedOperand').value == 1 ) {
     var selectedOperand = goldOr;
@@ -112,6 +113,10 @@ function buildMyList() {
     var selectedOperand = '';
     var trailingCharacter = '';
     var precedingCharacter = '';
+  }
+
+  if ( document.getElementById('userDefinedSuffix').value !== null ) {
+    trailingCharacter = document.getElementById('userDefinedSuffix').value + trailingCharacter;
   }
 
   if ( document.getElementById('trimSlash').checked ) {
@@ -301,48 +306,6 @@ function selectEscapeWildcards() {
   } else {
     document.getElementById('escapeWildcards').checked = true;
   }
-
-}
-
-function showAppOne() {
-
-  document.getElementById('appTwo').classList.remove('appPanelFocused');
-  document.getElementById('appThree').classList.remove('appPanelFocused');
-  document.getElementById('appOne').classList.add('appPanelFocused');
-
-  document.getElementById('tabTwo').classList.remove('selectedTab');
-  document.getElementById('tabThree').classList.remove('selectedTab');
-  document.getElementById('tabOne').classList.add('selectedTab');
-
-}
-
-function showAppTwo() {
-
-  document.getElementById('appOne').classList.remove('appPanelFocused');
-  document.getElementById('appThree').classList.remove('appPanelFocused');
-  document.getElementById('appTwo').classList.add('appPanelFocused');
-
-  document.getElementById('tabOne').classList.remove('selectedTab');
-  document.getElementById('tabThree').classList.remove('selectedTab');
-  document.getElementById('tabTwo').classList.add('selectedTab');
-
-}
-
-function showAppThree() {
-
-  document.getElementById('appOne').classList.remove('appPanelFocused');
-  document.getElementById('appTwo').classList.remove('appPanelFocused');
-  document.getElementById('appThree').classList.add('appPanelFocused');
-
-  document.getElementById('tabOne').classList.remove('selectedTab');
-  document.getElementById('tabTwo').classList.remove('selectedTab');
-  document.getElementById('tabThree').classList.add('selectedTab');
-
-}
-
-function toggleManPage() {
-
-  document.getElementById('appManPage').classList.toggle('unfocused');
 
 }
 
