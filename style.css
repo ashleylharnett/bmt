@@ -162,8 +162,8 @@ input[type=text] {
   height: 28px;
 }
 textarea {
-  width: calc(100% - 30px);
-  height: 120px;
+  width: 100%; // calc(100% - 30px);
+  height: 160px;
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 0px;
@@ -391,6 +391,9 @@ span.footerItem {
   padding: 0 10px;
 
 }
+#tabs {
+  padding: 0 20px;
+}
 @media screen and ( max-width: 750px ) {
   #appNavigation ul {
     border: none;
@@ -419,4 +422,35 @@ span.footerItem {
     float: none;
     width: 100%;
   }
+}
+
+div.numberedtextarea-wrapper { position: relative; }
+
+div.numberedtextarea-wrapper textarea {
+  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+div.numberedtextarea-line-numbers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 50px;
+  border: 1px solid #ddd;
+  background: #efefef;
+  color: #343434;
+  overflow: hidden;
+  font-family: monospace;
+  font-size: 0.9em;
+  line-height: 1em;
+  text-align: center;
+}
+
+div.numberedtextarea-number {
+  padding-right: 6px;
+  text-align: right;
 }

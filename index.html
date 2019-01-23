@@ -12,11 +12,7 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
     <script src="scripts/bmt.js"></script>
     <script src="scripts/jquery.js"></script>
     <script src="scripts/jquery-ui.js"></script>
-    <script>
-      $( function() {
-        $( "#tabs" ).tabs();
-      } );
-    </script>
+    <script src="plugins/nt/jquery.numberedtextarea.js"></script>
   </head>
 
   <body>
@@ -45,6 +41,7 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
           <li><a href="#tabs-1">Retrieval Strings</a></li>
           <li><a href="#tabs-2">Condition Builder</a></li>
           <li><a href="#tabs-3">Search &amp; Replace List</a></li>
+          <li><a href="#tabs-4">Strip HTML</a></li>
         </ul>
 
       <div id="">
@@ -292,6 +289,28 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 
         </fieldset><!-- /appThree -->
 
+        <fieldset id="tabs-4">
+
+          <div class="appPanelPart help">
+            <p>This tool can be used to strip HTML tags from text leaving you with plain text.</p>
+          </div><!-- /help -->
+
+          <div class="appPanelPart">
+            <label class="screenReader">Input:</label>
+            <textarea id="inputHtml" placeholder="Paste your HTML here"></textarea>
+          </div><!-- /appPanelPart -->
+
+          <div class="appPanelPart buttonArray">
+            <button id="stripHtml" name="stripHtml">Build My Text</button>
+          </div><!-- /appPanelPart -->
+
+          <div class="appPanelPart">
+            <label class="screenReader">Output:</label>
+            <textarea id="outputHtml"></textarea>
+          </div><!-- /appPanelPart -->
+
+        </fieldset><!-- /tabs-4 -->
+
       </div><!-- /tabs -->
 
     </div><!-- /appWindow -->
@@ -303,4 +322,10 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
     </footer><!-- /colophon -->
 
   </body>
+  <script>
+    $( function() {
+      $( "#tabs" ).tabs();
+    } );
+    $('textarea').numberedtextarea();
+  </script>
 </html>

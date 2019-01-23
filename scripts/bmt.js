@@ -2,7 +2,7 @@
 
 //Version
 
-var appVersion = '1.1';
+var appVersion = '1.2';
 
 //Event Listener
 
@@ -29,6 +29,10 @@ window.addEventListener("DOMContentLoaded", function(event) {
     buildMySelect();
   };
 
+  document.getElementById('stripHtml').onclick = function(event) {
+    stripHtml();
+  };
+
   document.getElementById('trimSlashLabel').onclick = function(event) {
     selectTrimSlashLabel();
   };
@@ -52,12 +56,12 @@ window.addEventListener("DOMContentLoaded", function(event) {
   document.getElementById('bannerHelp').onclick = function(event) {
     toggleManPage();
   };
+
   document.getElementById('closeManPage').onclick = function(event) {
     toggleManPage();
   };
 
 });
-
 
 // Copy Function
 
@@ -337,5 +341,11 @@ function selectEscapeWildcards() {
 function checkVersion() {
 
   document.getElementById('version').innerHTML = appVersion;
+
+}
+
+function stripHtml() {
+
+  document.getElementById('outputHtml').value = document.getElementById('inputHtml').value.replace(/<[^>]+>/g,'');
 
 }
