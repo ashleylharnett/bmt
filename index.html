@@ -9,7 +9,9 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
     <title>Build My Text</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="images/favicon.png" type="image/png">
+    <script src="scripts/underscore.min.js"></script>
     <script src="scripts/bmt.js"></script>
+    <script src="scripts/bmt-compare.js"></script>
     <script src="scripts/jquery.js"></script>
     <script src="scripts/jquery-ui.js"></script>
     <script src="plugins/nt/jquery.numberedtextarea.js"></script>
@@ -42,6 +44,7 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
           <li><a href="#tabs-2">Condition Builder</a></li>
           <li><a href="#tabs-3">Search &amp; Replace List</a></li>
           <li><a href="#tabs-4">Strip HTML</a></li>
+          <li><a href="#tabs-5">Compare Lists</a></li>
         </ul>
 
       <div id="">
@@ -308,6 +311,60 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
             <label class="screenReader">Output:</label>
             <textarea id="outputHtml"></textarea>
           </div><!-- /appPanelPart -->
+
+        </fieldset><!-- /tabs-4 -->
+
+        <fieldset id="tabs-5">
+
+          <div class="appPanelPart help">
+            <p>This tool lets you check two lists for differences. Paste your lists in the inoput fields and click 'Analyse My Text' to get started.</p>
+          </div><!-- /appPanelPart /help -->
+
+          <div class="appPanelPart">
+
+            <div class="colRow">
+
+              <div class="appPanelCol2">
+                <label>Input 1:</label>
+                <textarea id="diffInput1" placeholder="Paste your first list here"></textarea>
+              </div><!-- /appPanelCol2 -->
+
+              <div class="appPanelCol2">
+                <label>Input 2:</label>
+                <textarea id="diffInput2" placeholder="Paste your second list here"></textarea>
+              </div><!-- /appPanelCol2 -->
+
+            </div><!-- /colRow -->
+
+          </div><!-- /appPanelPart -->
+
+            <div class="appPanelPart buttonArray">
+              <button id="findDiffs" name="findDiffs" onclick="findDiffs();">Analyse My Text</button>
+            </div><!-- /appPanelPart -->
+
+          <div class="colRow">
+
+            <div class="appPanelCol4">
+              <label>In both lists:</label>
+              <textarea id="diffOutput1"></textarea>
+            </div><!-- /appPanelPart -->
+
+            <div class="appPanelCol4">
+              <label>Input 1 only:</label>
+              <textarea id="diffOutput2"></textarea>
+            </div><!-- /appPanelPart -->
+
+            <div class="appPanelCol4">
+              <label>Input 2 only:</label>
+              <textarea id="diffOutput3"></textarea>
+            </div><!-- /appPanelPart -->
+
+            <div class="appPanelCol4">
+              <label>All values from both lists:</label>
+              <textarea id="diffOutput4"></textarea>
+            </div><!-- /appPanelPart -->
+
+          </div><!-- /colRow -->
 
         </fieldset><!-- /tabs-4 -->
 

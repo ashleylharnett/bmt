@@ -53,14 +53,6 @@ window.addEventListener("DOMContentLoaded", function(event) {
     selectEscapeWildcards();
   };
 
-  document.getElementById('bannerHelp').onclick = function(event) {
-    toggleManPage();
-  };
-
-  document.getElementById('closeManPage').onclick = function(event) {
-    toggleManPage();
-  };
-
 });
 
 // Copy Function

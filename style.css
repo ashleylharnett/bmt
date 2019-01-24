@@ -376,6 +376,28 @@ input:checked + .slider:before {
 
 /* Columns */
 
+.colRow {
+  margin: 0 -10px;
+  overflow-x: hidden;
+}
+.appPanelCol2 {
+  margin: 0 10px;
+  display: inline-block;
+  width: calc( 50% - 20px );
+  float: left;
+}
+.appPanelCol4 {
+  margin: 0 10px;
+  display: inline-block;
+  width: calc( 25% - 20px );
+  float: left;
+}
+#diffOutput1,
+#diffOutput2,
+#diffOutput3,
+#diffOutput4 {
+  height: 300px;
+}
 .leftPanel, .rightPanel {
   display: inline-block;
 }
@@ -389,6 +411,9 @@ input:checked + .slider:before {
 }
 span.footerItem {
   padding: 0 10px;
+
+}
+.appPanelCol2 {
 
 }
 #tabs {
@@ -423,7 +448,6 @@ span.footerItem {
     width: 100%;
   }
 }
-
 div.numberedtextarea-wrapper { position: relative; }
 
 div.numberedtextarea-wrapper textarea {
