@@ -162,13 +162,16 @@ input[type=text] {
   height: 28px;
 }
 textarea {
-  width: 100%; // calc(100% - 30px);
+  width: calc(100% - 30px);
   height: 160px;
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 0px;
   font-family: monospace;
   font-size: 0.9em;
+}
+textarea.numberedText {
+  width: 100%;
 }
 select {
   height: 30px;

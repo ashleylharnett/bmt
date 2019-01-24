@@ -49,5 +49,4 @@ function findDiffs() {
   document.getElementById('diffOutput3').value = uniqueOutputTwo;
   document.getElementById('diffOutput4').value = allValuesUnion;
 
-
 };
