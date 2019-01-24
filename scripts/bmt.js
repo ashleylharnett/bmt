@@ -2,7 +2,7 @@
 
 //Version
 
-var appVersion = '1.2';
+var appVersion = '1.3';
 
 //Event Listener
 
