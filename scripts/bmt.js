@@ -2,7 +2,7 @@
 
 //Version
 
-var appVersion = '1.3';
+var appVersion = '1.4';
 
 //Event Listener
 
@@ -339,5 +339,16 @@ function checkVersion() {
 function stripHtml() {
 
   document.getElementById('outputHtml').value = document.getElementById('inputHtml').value.replace(/<[^>]+>/g,'');
+
+}
+
+function removeBlankRows(id) {
+
+  var source = document.getElementById(id);
+  var inputData = source.value;
+  var outputData = inputData.replace(/^\s*[\r\n]/gm, '');
+
+  source.value = outputData;
+  source.dispatchEvent(new Event('change'));
 
 }

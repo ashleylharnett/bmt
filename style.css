@@ -16,6 +16,9 @@ input,
 button {
   outline: none;
 }
+span.my {
+  color: #a9f6ff;
+}
 hr {
   border-top: 1px solid #ddd;
   margin: 30px 0;
@@ -30,14 +33,15 @@ hr {
 #appBanner {
   text-align: center;
   background: rgba(0,119,204,1);
-  padding: 16px 25px;
+  font-family: "Bungee Inline", sans-serif;
+  font-weight: 400;
+  padding: 12px 20px;
   margin: 0 0 30px 0;
 }
 #appBanner h1 {
   margin: 0;
   padding: 0;
-  font-size: 1.4em;
-  line-height: 1.4em;
+  font-size: 2em;
   text-align: center;
   font-weight: lighter;
   color: #fff;

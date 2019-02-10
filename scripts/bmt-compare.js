@@ -1,3 +1,34 @@
+//Event Listener
+
+window.addEventListener("DOMContentLoaded", function(event) {
+
+  document.getElementById('findDiffs').onclick = function(event) {
+    findDiffs();
+  };
+
+});
+
+//Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
+
+function getStats(inId,outId) {
+
+  // Input values
+  var inputText = document.getElementById(inId).value;
+
+  // Transform input
+  var inputLines = inputText.split("\n");
+  var inputRowCount = inputLines.length;
+
+  // Return 0 for row count if null
+  if ( inputText.length == 0 ) {
+    var inputRowCount = inputRowCount - 1 ;
+  }
+
+  // Print out to HTML
+  document.getElementById(outId).innerHTML = '<p>Row count: <code>' + inputRowCount  + '</code></p>' ;
+  document.getElementById(outId).style.display = "block";
+
+};
 
 function findDiffs() {
 
@@ -48,5 +79,10 @@ function findDiffs() {
   document.getElementById('diffOutput2').value = uniqueOutputOne;
   document.getElementById('diffOutput3').value = uniqueOutputTwo;
   document.getElementById('diffOutput4').value = allValuesUnion;
+
+  getStats('diffOutput1','diffOutput1Stats');
+  getStats('diffOutput2','diffOutput2Stats');
+  getStats('diffOutput3','diffOutput3Stats');
+  getStats('diffOutput4','diffOutput4Stats');
 
 };

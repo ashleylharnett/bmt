@@ -10,11 +10,11 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="images/favicon.png" type="image/png">
     <script src="scripts/underscore.min.js"></script>
-    <script src="scripts/bmt.js"></script>
-    <script src="scripts/bmt-compare.js"></script>
     <script src="scripts/jquery.js"></script>
     <script src="scripts/jquery-ui.js"></script>
     <script src="plugins/nt/jquery.numberedtextarea.js"></script>
+    <script src="scripts/bmt.js"></script>
+    <script src="scripts/bmt-compare.js"></script>
   </head>
 
   <body>
@@ -23,7 +23,9 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 
       <header id="appBanner">
         <div id="branding">
-            <h1><a href="index.html">Build My Text</a></h1>
+            <h1>
+              <a href="index.html">Build <span class="my">My</span> Text</a>
+            </h1>
         </div><!-- /branding -->
       </header><!-- appBanner -->
 
@@ -339,7 +341,7 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
           </div><!-- /appPanelPart -->
 
             <div class="appPanelPart buttonArray">
-              <button id="findDiffs" name="findDiffs" onclick="findDiffs();">Analyse My Text</button>
+              <button id="findDiffs" name="findDiffs">Analyse My Text</button>
             </div><!-- /appPanelPart -->
 
           <div class="colRow">
@@ -347,21 +349,25 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
             <div class="appPanelCol4">
               <label>In both lists:</label>
               <textarea id="diffOutput1"></textarea>
+              <div id="diffOutput1Stats" class="appPanelPart help" style="display: none;"></div>
             </div><!-- /appPanelPart -->
 
             <div class="appPanelCol4">
               <label>Input 1 only:</label>
               <textarea id="diffOutput2"></textarea>
+              <div id="diffOutput2Stats" class="appPanelPart help" style="display: none;"></div>
             </div><!-- /appPanelPart -->
 
             <div class="appPanelCol4">
               <label>Input 2 only:</label>
               <textarea id="diffOutput3"></textarea>
+              <div id="diffOutput3Stats" class="appPanelPart help" style="display: none;"></div>
             </div><!-- /appPanelPart -->
 
             <div class="appPanelCol4">
               <label>All values from both lists:</label>
               <textarea id="diffOutput4"></textarea>
+              <div id="diffOutput4Stats" class="appPanelPart help" style="display: none;"></div>
             </div><!-- /appPanelPart -->
 
           </div><!-- /colRow -->
