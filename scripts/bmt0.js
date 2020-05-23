@@ -34,74 +34,48 @@ var goldSemicolon =  '\u00B7;';
 
 //Functions
 
+function buildMyList() {
 
-// Split output of string concatenation
-
-function replaceNth(string, char, repl, n) {
-  var i = 0;
-  return string.replace(new RegExp(char, 'g'), c => i++ % n ? c : repl);
-}
-
-function splitAtNth(inValue,splitAt,delimiter,outDiv) {
-
-  var cr = '\n';
-
-  var output = inValue.replace(/(\r\n|\n|\r)/gm,cr); // '~~' will be the var with the delimiter character
-
-  var output = replaceNth( cr + output,'\n','\]\[',splitAt); //insert the brackets every n rows
-  var output = output.replace(/^]/, ''); // remove eroneous start ]
-  var output = output.replace(/\[$/, ''); // remove eroneous end ]
-
-	var htmlOutput = output.replace(/\[/g,'<li class="splitOutListItem"><textarea class="splitOutListItemText">');
-	var htmlOutput = htmlOutput.replace(/\]/g,'</textarea></li>');
-  var htmlOutput = '<h2>Outputs</h2><ol class="splitOutList">' + htmlOutput
-  $('#'+outDiv).html( htmlOutput );
-
-};
-
-function buildMyList(udPrefixId,udSuffixId,textInId,selectedOperandId,trimSlashId,addSlashStarId,clearSpacesId,textOutId) {
-
-  if ( $('#' + udPrefixId).val() !== '' ) {
-    var userDefinedPrefix = $('#' + udPrefixId).val()
+  if ( document.getElementById('userDefinedPrefix') !== '' ) {
+    var userDefinedPrefix = document.getElementById('userDefinedPrefix').value;
   } else {
     var userDefinedPrefix = '';
   }
 
-  if ( $('#' + udSuffixId).val() !== '' ) {
-    var userDefinedSuffix = $('#' + udSuffixId).val()
+  if ( document.getElementById('userDefinedSuffix') !== '' ) {
+    var userDefinedSuffix = document.getElementById('userDefinedSuffix').value;
   } else {
     userDefinedSuffix = '';
   }
 
-  var inputText = $('#' + textInId).val(); // document.getElementById('textIn').value;
+  var inputText = document.getElementById('textIn').value;
   var inputText = userDefinedPrefix + inputText.split('\n').join(userDefinedSuffix + '\n' + userDefinedPrefix);
-  var selectedOperandIn = $('#' + selectedOperandId ).val()
 
-  if ( selectedOperandIn == 1 ) {
+  if ( document.getElementById('selectedOperand').value == 1 ) {
     var selectedOperand = goldOr;
     var trailingCharacter = '';
     var precedingCharacter = '';
-  } else if ( selectedOperandIn == 2 ) {
+  } else if ( document.getElementById('selectedOperand').value == 2 ) {
     var selectedOperand = goldStar + goldOr;
     var trailingCharacter = goldStar;
     var precedingCharacter = '';
-  } else if ( selectedOperandIn == 3 ) {
+  } else if ( document.getElementById('selectedOperand').value == 3 ) {
     var selectedOperand = goldAnd + goldBang;
     var trailingCharacter = '';
     var precedingCharacter = goldBang;
-  } else if ( selectedOperandIn == 4 ) {
+  } else if ( document.getElementById('selectedOperand').value == 4 ) {
     var selectedOperand = '\',\'';
     var trailingCharacter = '\'';
     var precedingCharacter = '\'';
-  } else if ( selectedOperandIn == 5 ) {
+  } else if ( document.getElementById('selectedOperand').value == 5 ) {
     var selectedOperand = ',';
     var trailingCharacter = '';
     var precedingCharacter = '';
-  } else if ( selectedOperandIn == 6 ) {
+  } else if ( document.getElementById('selectedOperand').value == 6 ) {
     var selectedOperand = ';';
     var trailingCharacter = '';
     var precedingCharacter = '';
-  } else if ( selectedOperandIn == 7 ) {
+  } else if ( document.getElementById('selectedOperand').value == 7 ) {
     var selectedOperand = goldSemicolon;
     var trailingCharacter = '';
     var precedingCharacter = '';
@@ -111,15 +85,15 @@ function buildMyList(udPrefixId,udSuffixId,textInId,selectedOperandId,trimSlashI
     var precedingCharacter = '';
   }
 
-  if ( userDefinedSuffix !== null ) {
-    trailingCharacter = userDefinedSuffix + trailingCharacter;
+  if ( document.getElementById('userDefinedSuffix').value !== null ) {
+    trailingCharacter = document.getElementById('userDefinedSuffix').value + trailingCharacter;
   }
 
-  if ( document.getElementById(trimSlashId).checked ) {
+  if ( document.getElementById('trimSlash').checked ) {
     var inputText = inputText.replace(new RegExp('\/[0-9]*','g'), '');
   }
 
-  if ( document.getElementById(addSlashStarId).checked ) {
+  if ( document.getElementById('addSlashStar').checked ) {
     var inputText = inputText.replace(/^\s+|\s+$/g, '');
     var inputText = inputText + '/' + goldStar ;
     var inputText = inputText.replace(/(\r\n|\n|\r)/gm, '/' + goldStar + '\r');
@@ -128,35 +102,11 @@ function buildMyList(udPrefixId,udSuffixId,textInId,selectedOperandId,trimSlashI
   var cleanedText = inputText.replace(/^\s+|\s+$/g, '');
   var cleanedText = precedingCharacter + cleanedText.replace(/[\n\r]/g, selectedOperand) + trailingCharacter ;
 
-  if ( document.getElementById(clearSpacesId).checked == true ) {
+  if ( document.getElementById('clearSpaces').checked == true ) {
     var cleanedText = cleanedText.replace(/\s/g,'');
   }
 
-  document.getElementById(textOutId).value = cleanedText;
-
-}
-
-function runBuildMyList() {
-
-  if ( $('#splitRows').prop("checked") ) {
-
-    var inValue = $("#textIn").val();
-    var splitN = $("#splitRowsNumber").val();
-    splitAtNth(inValue,splitN,selectedOperand,'splitOutputDiv');
-
-    $('.splitOutListItemText').each(function(ind){
-
-      $(this).attr('id', 'splitOutListItemText-' + parseInt(ind + 1));
-
-      var id = $(this).attr("id");
-
-      buildMyList('userDefinedPrefix','userDefinedSuffix',id,'selectedOperand','trimSlash','addSlashStar','clearSpaces',id);
-
-    })
-
-  };
-
-  buildMyList('userDefinedPrefix','userDefinedSuffix','textIn','selectedOperand','trimSlash','addSlashStar','clearSpaces','textOut');
+  document.getElementById('textOut').value = cleanedText;
 
 }
 
@@ -469,6 +419,36 @@ function buildMyDecode(field,data,delim,out) {
 
 };
 
+// Split output of string concatenation
+
+function replaceNth(string, char, repl, n) {
+    var i = 0;
+    return string.replace(new RegExp(char, 'g'), c => i++ % n ? c : repl);
+}
+
+function splitAtNth(inValue,splitAt,delimiter,outDiv) {
+
+	var splitAt = 5
+
+	var inValue = $('#in').val();
+
+  var iterate = 1
+
+ // var inValue = inValue.replace(/\r\n/g,"\n");
+
+  var output = inValue.replace(/(\r\n|\n|\r)/gm,delimiter); // '~~' will be the var with the delimiter character
+
+  var output = replaceNth( delimiter + output,delimiter,'\]\[',splitAt); //insert the brackets every n rows
+  var output = output.replace(/^]/, ''); // remove eroneous start ]
+  var output = output.replace(/\[$/, ''); // remove eroneous end ]
+
+
+	var htmlOutput = output.replace(/\[/g,'<textarea>');
+	var htmlOutput = htmlOutput.replace(/\]/g,'</textarea>');
+
+  $('#'+outDiv).html(htmlOutput);
+
+};
 
 // ** Click Events
 
@@ -477,11 +457,11 @@ $(document).ready(function(){
   $('#version').html(appVersion);
 
   $('#buildMyList').click(function(){
-    runBuildMyList();
+    buildMyList();
   });
 
   $('#buildAndCopyMyList').click(function(){
-    runBuildMyList();
+    buildMyList();
     copyStringToClipboard("textOut");
   });
 
@@ -523,8 +503,6 @@ $(document).ready(function() {
 
   $( "#splitRows" ).change(function(){
     $( "#splitRowsTogglable" ).toggle('fast','linear');
-    $( "#buildAndCopyMyList").toggleClass('hide');
-    $( "#textOut").toggleClass('hide');
   });
 
   //Dark Mode

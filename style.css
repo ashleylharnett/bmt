@@ -11,6 +11,17 @@ body {
   font-size: 14px;
   font-family: 'Quicksand', sans-serif;
 }
+body.darkMode {
+  background: #111;
+  color: #fff;
+}
+.darkModeTransition {
+  -webkit-transition: all 0.7s;
+  -moz-transition: all 0.7s;
+  -ms-transition: all 0.7s;
+  -o-transition: all 0.7s;
+  transition: all 0.7s;
+}
 textarea,
 input,
 button {
@@ -36,22 +47,30 @@ hr {
   font-family: "Bungee Inline", sans-serif;
   font-weight: 400;
   padding: 12px 20px;
-  margin: 0 0 30px 0;
+  /*margin: 0 0 30px 0;*/
+}
+body.darkMode #appBanner {
+  background: rgba(31, 35, 38, 1);
 }
 #appBanner h1 {
   margin: 0;
   padding: 0;
   font-size: 2em;
   line-height: 1em;
-  text-align: center;
   font-weight: lighter;
   color: #fff;
   width: 100%;
+}
+body.darkMode #appBenner h1 {
+  color: #ccc;
 }
 #appBanner h1 a {
   color: #fff;
   width: 100%;
   text-decoration: none;
+}
+body.darkMode  #appBanner h1 a {
+  color: #ccc
 }
 #brandingLeft,
 #brandingRight {
@@ -74,32 +93,21 @@ hr {
 #tabs,
 .page {
   overflow: hidden;
-  max-width: 1200px;
+  /*max-width: 1200px;*/
   margin: 0 auto;
-}
-#appManPage {
-  margin-bottom: 25px;
-  border: 1px solid #ddd;
-}
-.manPageContent {
-  padding: 5px 25px 10px 25px;
-}
-.manPageContent h2 {
-  margin: 20px 0 8px 0;
-  font-size: 1.3em;
-}
-.manPageContent p {
-  padding: 0;
-  margin: 0 0 15px 0;
 }
 #appContainer {
   padding: 25px;
 }
 .ui-tabs-nav {
   list-style-type: none;
-  margin: 0 0 25px 0;
-  padding: 0 4px;
-  border-bottom: 1px solid #ddd;
+  margin: 0 -20px 25px -20px;
+  padding: 0;
+  /*border-bottom: 1px solid #ddd; */
+  background: #efefef;
+}
+body.darkMode .ui-tabs-nav {
+  border-bottom-color: #5b5151;
 }
 .ui-tabs-nav li {
   display: inline;
@@ -107,40 +115,37 @@ hr {
 }
 .ui-tabs-nav li a {
   display: inline-block;
-  padding: 7px 12px 10px 12px;
+  padding: 15px 20px;
 /*  border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   border: 1px solid #ddd;*/
-  margin-bottom: -1px;
   color: #343434;
   text-decoration: none;
   outline: none !important;
 }
+body.darkMode .ui-tabs-nav {
+  color: #efefef;
+  background: #343434;
+}
+body.darkMode .ui-tabs-nav a {
+  color: #efefef;
+}
 .ui-tabs-nav li.ui-tabs-active a {
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #fff;
-  border-top: 3px solid rgba(0,119,204,1);
-  padding: 7px 11px 10px 11px;
+  background: #ccc;
   outline: none !important;
+}
+body.darkMode .ui-tabs-nav li.ui-tabs-active a {
+  background: #343434;
 }
 .ui-tabs-nav li a:hover {
-  background: #efefef;
-  border-top: 3px solid #efefef;
+  background: rgb(0, 176, 204);
+  color: #fff
 }
-.ui-tabs-nav li.ui-tabs-active a:hover {
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #fff;
-  border-top: 3px solid rgba(0,119,204,1);
-  padding: 7px 11px 10px 11px;
-  outline: none !important;
-  background: #fff;
+body.darkMode .ui-tabs-nav li a:hover {
+  background: rgba(0, 97, 150, 1);
 }
-.ui-tabs-nav li .ui-tabs-active a:hover {
-  background: none;
-  border-top: 3px solid rgba(0,119,204,1);
-  outline: none !important;
+body.darkMode .ui-tabs-nav li.ui-tabs-active a {
+  background: #444
 }
 fieldset {
   border: none;
@@ -155,15 +160,16 @@ fieldset {
 }
 label {
   padding: 5px 0;
+  font-size: 0.9em;
 }
 input[type=text] {
   display: inline-block;
   margin: 0px;
-  padding: 7px 15px;
+  padding: 5px 10px;
   border: 1px solid #ddd;
   font-size: 0.9em;
   box-shadow: none;
-  width: calc(100% - 30px);
+  width: calc(100% - 20px);
   height: 28px;
 }
 textarea {
@@ -178,66 +184,140 @@ textarea {
 textarea.numberedText {
   width: 100%;
 }
-select {
-  height: 30px;
-  border: 1px solid #ddd;
-  background: #fff;
+.ui-selectmenu-menu {
+  display: none;
+  border: none;
+  outline: none !important;
+
 }
-noscript p,
-.warning p {
-  display: block;
-  padding: 10px 20px;
-  border: 1px solid rgba(204,0,0,1);
-  border-radius: 4px;
-  color: rgba(204,0,0,1);
-  background: rgba(204,0,0,0.1);
+.ui-selectmenu-open ul {
+  list-style-type: none;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+
+  margin: 0;
+  padding: 0;
+}
+.ui-selectmenu-open ul li {
+  list-style-type: none;
+  padding: 10px 10px;
+  margin: 0px;
+  border-bottom: 1px solid #ddd;
+  font-size: 1em;
+}
+.ui-selectmenu-open ul li:hover {
+  background: rgb(0, 176, 204);
+  color: #fff;
+}
+.ui-selectmenu-open {
+  display: inline-block;
+  margin: 0px;
   font-size: 0.9em;
-  font-weight: bold;
+  box-shadow: none;
+  background: #fff;
+  z-index: 100;
   overflow: hidden;
-  max-width: 808px;
-  margin: 25px auto;
 }
-.optionsArray {
-  border-top: 1px solid #efefef;
+.ui-selectmenu-button {
+  display: inline-block;
+  margin: 0px;
+  padding: 7px 10px;
+  border: 1px solid #ddd;
+  font-size: 0.9em;
+  box-shadow: none;
+  width: calc(100% - 20px);
+  background: #fff;
+  z-index: 100;
+  overflow: hidden;
+  line-height: 28px;
+  outline: none !important;
 }
-.optionSelectList {
-    width: 100%;
-    border-radius: none;
-    border: none;
-    font-size: 0.9em;
-    height: 28px;
+.ui-selectmenu-button {
+  background-image: url('images/select-arrows-b.png');
+  background-position: calc(100% - .5rem), 100% 0;
+  background-size:  8px;
+  background-repeat: no-repeat;
+}
+.ui-selectmenu-text {
+  padding: 5px;
+}
+body.darkMode .ui-selectmenu-button {
+  background-image: url('images/select-arrows-w.png') !important;
+  background-position: calc(100% - .5rem), 100% 0 !important;
+  background-size:  8px !important;
+  background-repeat: no-repeat !important;
+}
+body.darkMode .ui-selectmenu-button,
+body.darkMode .ui-selectmenu-open {
+  background: #111;
+  color: #efefef;
+  border-color: #5b5151;
+}
+body.darkMode .ui-selectmenu-open ul {
+  border-left: 1px solid #5b5151;
+  border-right: 1px solid #5b5151;
+}
+body.darkMode .ui-selectmenu-open ul li {
+  border-bottom: 1px solid #5b5151;
+}
+body.darkMode .ui-selectmenu-open ul li:hover {
+  background: rgba(0, 97, 150, 1);
+  color: #fff;
+}
+
+.errorPage {
+  width: calc(100% - 40px);
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: 200;
+  background: #fff;
+  overflow: hidden;
 }
 .buttonArray {
   text-align: center;
 }
 button {
-  display: block;
+  display: inline-block;
   margin: 5px auto;
-  padding: 7px 14px;
+  padding: 7px 20px;
   border: 1px solid rgba(0,119,204,1);
-  border-radius: 6px;
+  border-radius: 0;
   color: #fff;
   background: rgba(0,119,204,1);
   font-size: 0.9em;
   box-shadow: none;
-  width: 100%;
+  cursor: pointer;
+}
+body.darkMode button {
+  background: rgba(0, 60, 102, 1);
+  border-color: rgba(0, 60, 102, 1);
 }
 a.link-button {
   display: inline-block;
   margin: 5px auto;
   padding: 7px 14px;
   border: 1px solid rgba(0,119,204,1);
-  border-radius: 6px;
+  border-radius: 0;
   color: #fff;
   background: rgba(0,119,204,1);
   font-size: 0.9em;
   box-shadow: none;
   text-decoration: none;
 }
+body.darkMode a.link-button {
+  background: rgba(0, 60, 102, 1);
+  border-color: rgba(0, 60, 102, 1);
+}
 a.link-button:hover {
   background: rgb(0, 176, 204);
   border: 1px solid rgb(0, 176, 204);
   color: #fff;
+}
+body.darkMode a.link-button:hover {
+  background: rgba(0, 97, 150, 1);
+  border-color: rgba(0, 97, 150, 1);
 }
 button.headerButton {
   border: 1px solid rgb(152, 152, 152);
@@ -257,21 +337,30 @@ button.headerButton:hover {
   cursor: pointer;
 }
 .appOption {
-  border-bottom: 1px solid #efefef;
-  padding: 6px 0;
+  padding: 0px 0px 15px 0;
+}
+body.darkMode .appOption {
+  border-bottom-color: #333;
 }
 button:hover {
   background: rgb(0, 176, 204);
   border: 1px solid rgb(0, 176, 204);
   color: #fff;
 }
+body.darkMode button:hover {
+  background: rgba(0, 97, 150, 1);
+  border-color: rgba(0, 97, 150, 1);
+}
 footer#colophon {
   text-align: right;
   color: #b3b3b3;
-  background: #333;
-  position: fixed;
-  bottom: 0;
+  margin-top: 60px;
+  margin-bottom: 30px;
   width: 100%;
+  text-align: center;
+}
+body.darkMode footer#colophon {
+  color: #666;
 }
 footer#colophon a {
   color: inherit;
@@ -303,6 +392,13 @@ footer#colophon p {
 }
 .help p {
   color: #333;
+}
+body.darkMode .help {
+  background: #343434;
+  border-left-color: #555
+}
+body.darkMode .help p {
+  color: #efefef;
 }
 .appPanelPart p {
   margin: 0;
@@ -340,6 +436,9 @@ footer#colophon p {
   -webkit-transition: .4s;
   transition: .4s;
 }
+body.darkMode .slider {
+  background-color: #444;
+}
 
 .slider:before {
   position: absolute;
@@ -354,7 +453,7 @@ footer#colophon p {
 }
 
 input:checked + .slider {
-  background-color: rgba(0,119,204,1);
+  background-color: rgba(21, 190, 13, 1);
 }
 
 input:focus + .slider {
@@ -411,11 +510,11 @@ input:checked + .slider:before {
 }
 .leftPanel {
   float: left;
-  width: 60%;
+  width: calc(100% - 330px);
 }
 .rightPanel {
   float: right;
-  width: 35%;
+  width: 300px;
 }
 span.footerItem {
   padding: 0 10px;
@@ -427,9 +526,32 @@ span.footerItem {
 #tabs {
   padding: 0 20px;
 }
+#darkModeToggleContainer {
+  top: 0;
+  right: 0;
+  position: absolute;
+  display: block;
+  padding: 10px;
+  line-height: 26px;
+  font-family: 'Quicksand', sans-serif;
+  color: #efefef;
+  margin-top: 2px;
+}
+#darkModeToggleContainer label {
+  margin-left: 20px;
+}
+.tab-float-right {
+  float: right;
+}
+.hide {
+  display: none;
+}
 @media screen and ( max-width: 750px ) {
   #appNavigation ul {
     border: none;
+  }
+  #appBanner {
+    text-align: left;
   }
   #appNavigation li a  {
     border: 1px solid #ddd;
@@ -482,7 +604,49 @@ div.numberedtextarea-line-numbers {
   text-align: center;
 }
 
+body.darkMode div.numberedtextarea-line-numbers  {
+  color: #ccc;
+  background: #111;
+  border-color: #5b5151;
+}
 div.numberedtextarea-number {
   padding-right: 6px;
   text-align: right;
+}
+
+.hideIfLight {
+  display: none;
+}
+.hideIfLight.showIfDark {
+  display: block !important;
+}
+
+ol.splitOutList  {
+  list-style: none;
+  counter-reset: list-out-counter;
+  padding: 0px;
+}
+ol.splitOutList li {
+  counter-increment: list-out-counter;
+}
+ol.splitOutList li::before {
+  content: "Output: " counter(list-out-counter);
+}
+
+/* Other UI effects */
+
+#splitRowsTogglable {
+  display: none;
+}
+
+a {
+  color: inherit;
+}
+/* Dark Mode */
+
+body.darkMode textarea,
+body.darkMode input[type=text] {
+  border-color: #5b5151;
+  background: #222;
+  color: #efefef;
 }

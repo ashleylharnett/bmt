@@ -14,7 +14,6 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
     <script src="scripts/jquery-ui.js"></script>
     <script src="plugins/nt/jquery.numberedtextarea.js"></script>
     <script src="scripts/bmt.js"></script>
-    <script src="scripts/bmt-compare.js"></script>
   </head>
 
   <body>
@@ -26,32 +25,51 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
             <h1>
               <a href="index.html">Build <span class="my">My</span> Text</a>
             </h1>
+
+            <div id="darkModeToggleContainer">
+
+              <span class="checkboxToggle" data-id="toggleDarkMode">Dark mode</span>
+              <label class="switch">
+                <input type="checkbox" id="toggleDarkMode" unchecked>
+                <span class="slider round"></span>
+              </label>
+
+            </div><!-- /darkModeToggleContainer -->
         </div><!-- /branding -->
       </header><!-- appBanner -->
 
       <!--[if IE 9]>
-      <div class="warning">
+      <div class="errorPage">
+        <h1>Build My Text</h1>
+        <h2>Usuported Browser</h2>
         <p>Your browser is out of date and is not supported. You might want to try using <a href="https://www.google.com/chrome/" target="_blank">Google Chrome</a> or <a href="https://www.mozilla.org/en-GB/firefox/new/" target="_blank">Firefox</a>.</p>
       </div>
       <![endif]-->
 
       <noscript>
-          <p>Alas, this requires JavaScript to function and you don't seem to have it enabled in this browser.</p>
+          <div class="errorPage">
+            <h1>Build My Text</h1>
+            <h2>JavaScript Disabled or not Supported</h2>
+            <p>Alas, this requires JavaScript to function and you don't seem to have it enabled in this browser.</p>
+            <p>The reason for this is so that all functions can be performed client-side without the need to transmit information to any other system.</p>
+          </div>
       </noscript>
 
       <div id="tabs" class="ui-tabs ui-corner-all ui-widget ui-widget-content">
 
         <ul>
-          <li><a href="#tabs-1">Retrieval Strings</a></li>
-          <li><a href="#tabs-2">Condition Builder</a></li>
-          <li><a href="#tabs-3">Search &amp; Replace List</a></li>
-          <li><a href="#tabs-4">Strip HTML</a></li>
-          <li><a href="#tabs-5">Compare Lists</a></li>
+          <li><a href="#tabs-1">Retrieval Strings</a></li><!--
+          --><li><a href="#tabs-2">Condition Builder</a></li><!--
+          --><li><a href="#tabs-3">&amp;S List Builder</a></li><!--
+          --><li><a href="#tabs-4">Strip HTML</a></li><!--
+          --><li><a href="#tabs-5">Compare Lists</a></li><!--
+          --><li><a href="#tabs-6">SQL decode() Builder</a></li><!--
+          --><li><a href="#tabs-99" class="tab-float-right">About</a></li>
         </ul>
 
       <div id="">
 
-        <fieldset id="tabs-1">
+        <fieldset id="tabs-1" class="app-grid">
 
           <div class="appPanelPart help">
             <p>Note that SITS will usually only retrieve a maximum of around 400 records at a time in this way. Select your options and paste a column of data in the field below to start.</p>
@@ -71,7 +89,11 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 
             <div class="appPanelPart">
               <label class="screenReader">Output:</label>
-              <textarea id="textOut" cols="50" rows="50"></textarea>
+              <textarea id="textOut" rows="50"></textarea>
+            </div><!-- appPanelPart -->
+
+            <div class="appPanelPart" id="splitOutputDiv">
+
             </div><!-- appPanelPart -->
 
           </div><!-- /leftPanel -->
@@ -82,7 +104,7 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 
               <div class="appOption">
 
-                <select id="selectedOperand" class="optionSelectList">
+                <select id="selectedOperand" class="optionSelectList jq-select">
                   <option value="1">Or &middot;|</option>
                   <option value="2">Wildcard or &middot;*&middot;| </option>
                   <option value="3">Exclusion list &middot;&amp;&middot;! </option>
@@ -97,7 +119,7 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 
               <div class="appOption">
 
-                <span class="inputContainer" id="trimSlashLabel">Trim slash numbers</span>
+                <span class="inputContainer checkboxToggle" data-id="trimSlash" id="trimSlashLabel">Trim slash numbers</span>
 
                 <label class="switch">
                   <input type="checkbox" id="trimSlash" unchecked>
@@ -108,7 +130,7 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 
               <div class="appOption">
 
-                <span class="inputContainer" id="addSlashStarLabel">Add slash goldstar (/&middot;*)</span>
+                <span class="inputContainer checkboxToggle" data-id="addSlashStar" id="addSlashStarLabel">Add slash goldstar (/&middot;*)</span>
 
                 <label class="switch">
                   <input type="checkbox" id="addSlashStar" unchecked>
@@ -119,7 +141,7 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 
               <div class="appOption">
 
-                <span class="inputContainer" id="clearSpacesLabel">Remove Spaces</span>
+                <span class="inputContainer checkboxToggle" data-id="clearSpaces" id="clearSpacesLabel">Remove Spaces</span>
 
                 <label class="switch">
                   <input type="checkbox" id="clearSpaces" checked>
@@ -140,6 +162,23 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 
               </div><!-- /appOption -->
 
+              <div class="appOption">
+
+                <span class="inputContainer checkboxToggle" data-id="splitRows" id="splitRowsLabel">Split output? (experimental)</span>
+
+                <label class="switch">
+                  <input type="checkbox" id="splitRows">
+                  <span class="slider round"></span>
+                </label>
+
+              </div><!-- /appOption -->
+
+              <div class="appOption" id="splitRowsTogglable">
+                <label>Split after how many items?</label>
+                <input type="text" value="350" id="splitRowsNumber" placeholder="How many items per output string?">
+
+              </div><!-- /appOption -->
+
             </div><!-- appPanelPart -->
 
           </div><!-- /rightPanel -->
@@ -149,7 +188,7 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
         <fieldset id="tabs-2">
 
           <div class="appPanelPart help">
-            <p>This tool helps build conditional text statements using new style SRL sytax, consult the <a href="https://www.mysits.com/mysits/sits940/940manuals/index.htm?https://www.mysits.com/mysits/sits940/940manuals/mensys/02super/09srl/04syntax/02conpara.htm">SITS manual</a> for more information on wildcards and conditional text.</p>
+            <p>This tool helps build conditional text statements, consult the <a href="https://www.mysits.com/mysits/sits990/990manuals/index.htm?https://www.mysits.com/mysits/sits990/990manuals/mensys/02super/09srl/04syntax/02conpara.htm">SITS manual</a> for more information on wildcards and conditional text.</p>
           </div><!-- /appPanelPart /help -->
 
           <div class="leftPanel">
@@ -220,7 +259,7 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 
             </div><!-- appPanelPart -->
 
-            <div class="appPanelPart">
+            <div class="appPanelPart checkboxToggle" data-id="escapeWildcards">
 
               <label class="switch">
                 <input type="checkbox" id="escapeWildcards" unchecked>
@@ -278,7 +317,7 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 
             </div><!-- /appOption -->
 
-              <div class="appOption">
+              <div class="appOption checkboxToggle" data-id="searchTypeLabel">
 
               <label class="switch">
                 <input type="checkbox" id="searchType" unchecked>
@@ -302,7 +341,7 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 
           <div class="appPanelPart">
             <label class="screenReader">Input:</label>
-            <textarea id="inputHtml" placeholder="Paste your HTML here" class="numberedText"></textarea>
+            <textarea id="inputHtml" placeholder="Paste your HTML here" class="numberedText html"></textarea>
           </div><!-- /appPanelPart -->
 
           <div class="appPanelPart buttonArray">
@@ -372,7 +411,68 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
 
           </div><!-- /colRow -->
 
-        </fieldset><!-- /tabs-4 -->
+        </fieldset><!-- /tabs-5 -->
+
+        <fieldset id="tabs-6">
+
+          <div class="appPanelPart help">
+            <p>This tool helps build a SQL decode() statement based on two columns of data.</p>
+          </div><!-- /appPanelPart /help -->
+
+
+          <div class="leftPanel">
+
+            <div class="appPanelPart">
+              <input type="text" value="" id="decodeColumn" size="40" placeholder="Enter decode column name (e.g. men_fld.fld_code)">
+            </div><!-- /appPanelPart -->
+
+            <div class="appPanelPart">
+              <label class="screenReader">Input:</label>
+              <textarea id="decodeTextIn" placeholder="Paste your data here" class="numberedText"></textarea>
+            </div><!-- appPanelPart -->
+
+            <div class="appPanelPart buttonArray">
+              <button id="buildMyDecode">Build My Text</button>
+            </div><!-- appPanelPart -->
+
+            <div class="appPanelPart">
+              <label class="screenReader">Output:</label>
+              <textarea id="decodeTextOut" cols="50" rows="50"></textarea>
+            </div><!-- appPanelPart -->
+
+          </div><!-- /leftPanel -->
+
+          <div class="rightPanel">
+
+          <div class="appPanelPart optionsArray">
+
+            <div class="appOption">
+
+              <select id="selectedDecodeDelimeter" class="optionSelectList">
+                <option value="1" selected>Tab delimited input</option>
+                <option value="2">Comma delimited input</option>
+                <option value="3">Semicolon delimited input</option>
+                <option value="4">Pipe/Bar delimited input</option>
+              </select>
+
+            </div><!-- /appOption -->
+
+          </div><!-- appPanelPart -->
+
+          </div><!-- /rightPanel -->
+
+        </fieldset><!-- /tab-6 -->
+
+
+        <fieldset id="tabs-99">
+
+          <h2>What is this?</h2>
+          <p>It's a set of simple text-manipulation tools which I wrote to help me with my work. I'm sharing them here so they can help you too.</p>
+          <h2>Is this secure?</h2>
+          <p>All the code to transform your text is run client-side (on you computer) and no data is transmitted to any external servers (it stays on your computer) so it's as safe and secure as the maching you're running it on.</p>
+
+        </fieldset><!-- /tab-99 -->
+
 
       </div><!-- /tabs -->
 
@@ -385,10 +485,4 @@ Build My Text (buildmytext.com) is Copyright Ashley Harnett, 2017
     </footer><!-- /colophon -->
 
   </body>
-  <script>
-    $( function() {
-      $( "#tabs" ).tabs();
-    } );
-    $('.numberedText').numberedtextarea();
-  </script>
 </html>
