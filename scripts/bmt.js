@@ -146,11 +146,13 @@ function runBuildMyList() {
 
     $('.splitOutListItemText').each(function(ind){
 
-      $(this).attr('id', 'splitOutListItemText-' + parseInt(ind + 1));
+      $(this).attr('id', 'splitOutListItemText' + parseInt(ind + 1));
 
       var id = $(this).attr("id");
 
       buildMyList('userDefinedPrefix','userDefinedSuffix',id,'selectedOperand','trimSlash','addSlashStar','clearSpaces',id);
+
+      $(this).parent().append('<button class="copyList" onclick="copyStringToClipboard(\'' + id + '\');">Copy to clipboard</button>');
 
     })
 

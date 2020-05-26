@@ -632,6 +632,9 @@ ol.splitOutList li {
 ol.splitOutList li::before {
   content: "Output: " counter(list-out-counter);
 }
+li.splitOutListItem {
+  margin-bottom: 20px;
+}
 
 /* Other UI effects */
 
